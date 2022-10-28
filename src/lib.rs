@@ -18,6 +18,14 @@ pub fn commands() -> Command {
         )
 }
 
+pub fn bench_functions(part_a: fn(String) -> i32, part_b: fn(String) -> i32, input: String) -> () {
+    println!("running part a:");
+    println!("result is {}", part_a(input.clone()));
+
+    println!("running part b:");
+    println!("result is {}", part_b(input.clone()));
+}
+
 pub fn display_error_and_exit(msg: String) -> () {
     eprintln!("{}", msg);
     process::exit(1);
