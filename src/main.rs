@@ -1,15 +1,15 @@
 use std::fs::read_to_string;
 
-mod day01;
-mod lib;
+mod cli;
+mod days;
+mod utils;
 
 fn main() {
-    let matches = lib::commands().get_matches();
+    let commands = cli::commands();
     let day: u16;
-    let parts: (fn(String) -> i32, fn(String) -> i32);
-    let mut input = String::new();
+    let input: String;
 
-    match matches.subcommand() {
+    match commands.get_matches().subcommand() {
         Some(("run", sub_matches)) => {
             day = *sub_matches.get_one::<u16>("day").unwrap();
         }
@@ -18,14 +18,11 @@ fn main() {
 
     match day {
         1 => {
-            parts = (day01::part_a, day01::part_b);
             input = read_to_string(format!("./static/day{}{}.txt", day / 10, day % 10)).unwrap();
+            utils::run_day(day, days::get_day(1), input);
         }
         x => {
-            lib::display_error_and_exit(format!("Day {} is not yet implemented.", x));
-            unreachable!();
+            utils::display_error_and_exit(format!("Day {} is not yet implemented.", x));
         }
     }
-
-    lib::bench_functions(parts.0, parts.1, input);
 }
