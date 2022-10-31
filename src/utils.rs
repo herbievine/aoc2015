@@ -17,7 +17,7 @@ fn run_part(part_char: char, part: Part, input: String) -> () {
     println!("---------------");
 
     println!("Part {}: {}", part_char, part.question);
-    println!("Result: {}", (part.function)(input));
+    println!("Result: {:?}", (part.function)(input));
 
     println!("---------------\n");
 }

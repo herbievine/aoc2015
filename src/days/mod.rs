@@ -1,9 +1,15 @@
 mod day01;
 
+#[derive(Debug)]
+pub enum PartReturnType {
+    I32(i32),
+    // String(String),
+}
+
 pub struct Part {
     pub part_char: char,
     pub question: String,
-    pub function: fn(String) -> i32,
+    pub function: fn(String) -> PartReturnType,
 }
 
 pub fn get_day(day: u16) -> (Part, Part) {
