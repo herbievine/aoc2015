@@ -21,7 +21,7 @@ pub fn part_b(input: String) -> PartReturnType {
     let mut index = 0;
 
     input.chars().enumerate().fold(0i32, |acc, (i, c)| {
-        if acc < 0 && index != 0 {
+        if acc < 0 && index == 0 {
             index = i as i32;
         };
 
